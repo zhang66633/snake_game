@@ -100,7 +100,7 @@ MENU ──→ CLASSIC ──死亡──→ GAME_OVER
 
 ---
 
-## 可学习的点 / 经验
+## 经验
 
 ### BFS 寻路与 AI 决策
 - `_ai_bfs()` — 标准 BFS 找最短路径，处理穿墙和蛇身占用（考虑即将离开的尾部）
@@ -190,9 +190,7 @@ pyinstaller --onefile --add-data "fonts:fonts" snake.py
 | `snake.py` | 主程序（~2680 行），包含所有游戏逻辑 |
 | `settings.json` | 用户设置持久化（自动创建） |
 | `highscore.txt` | 最高分记录（自动创建） |
-| `snake.c` | C 语言版蛇（独立实现，与本 Python 版无关） |
-| `snake.exe` | C 语言版编译产物 |
-| `dist/SnakeGame.exe` | Python 版 PyInstaller 打包产物 |
+| `SnakeGame.exe` | Python 版 PyInstaller 打包产物 |
 
 ## 操作
 
