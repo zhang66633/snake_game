@@ -100,7 +100,7 @@ MENU ──→ CLASSIC ──死亡──→ GAME_OVER
 
 ---
 
-## 经验
+## 可学习的点 / 经验
 
 ### BFS 寻路与 AI 决策
 - `_ai_bfs()` — 标准 BFS 找最短路径，处理穿墙和蛇身占用（考虑即将离开的尾部）
@@ -139,12 +139,60 @@ MENU ──→ CLASSIC ──死亡──→ GAME_OVER
 - 转弯关节：用线条连接相邻格，再在上面叠加方块/圆形，隐藏穿屏线（跳过跨度 > 1 的段）
 - 游戏结束画面：`screen.copy()` 捕获当前帧，再叠加半透明黑色遮罩
 
-## 运行
+## 技术细节
+
+### 环境要求
+
+| 项目 | 说明 |
+|------|------|
+| Python | 3.6+（无版本特定语法，3.6 即可运行） |
+| 依赖 | `pygame` 仅此一项，无其他外部库 |
+| 标准库 | `random` `sys` `os` `json` `math` `array` `collections.deque` |
+| 平台 | Windows / macOS / Linux 均可运行 |
+
+### 安装与运行
 
 ```bash
+# 创建虚拟环境（推荐）
+python -m venv venv
+source venv/bin/activate   # Linux/macOS
+venv\Scripts\activate      # Windows
+
+# 安装依赖
 pip install pygame
+
+# 运行
 python snake.py
 ```
+
+### Pygame 版本兼容
+
+代码使用稳定的 Pygame 2.x API（`SRCALPHA`、`SCALED`、`mixer.Sound(buffer=...)`），兼容 Pygame 2.0 及以上版本。
+
+- `pygame.SCALED` 全屏标志需 Pygame 2.0+
+- `pygame.mixer.Sound(buffer=bytes)` 需 Pygame 2.0+
+
+若遇到音频设备初始化失败（部分无音频设备环境），程序会自动降级为静音模式，不影响游戏运行。
+
+### 打包为独立可执行文件
+
+```bash
+pip install pyinstaller
+pyinstaller --onefile --add-data "fonts:fonts" snake.py
+```
+
+代码已内置 `sys.frozen` 检测，PyInstaller 打包后字体和路径正常工作。
+
+### 文件说明
+
+| 文件 | 用途 |
+|------|------|
+| `snake.py` | 主程序（~2680 行），包含所有游戏逻辑 |
+| `settings.json` | 用户设置持久化（自动创建） |
+| `highscore.txt` | 最高分记录（自动创建） |
+| `snake.c` | C 语言版蛇（独立实现，与本 Python 版无关） |
+| `snake.exe` | C 语言版编译产物 |
+| `dist/SnakeGame.exe` | Python 版 PyInstaller 打包产物 |
 
 ## 操作
 
@@ -155,3 +203,4 @@ python snake.py
 | PVP | P1: `↑↓←→` P2: `WASD` `P/R` 准备 `R` 重开 |
 | PVP 战斗 | 额外 P1: `\` 射击 P2: `F` 射击 |
 | 全局 | `F11` 全屏切换 |
+
