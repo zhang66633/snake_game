@@ -1,0 +1,20 @@
+{
+  "classic_speed_idx": 0,
+  "classic_walls": true,
+  "pvp_collision_speed_idx": 1,
+  "pvp_collision_init_len": 30,
+  "pvp_collision_walls": false,
+  "pvp_collision_food": 10,
+  "pvp_collision_grid_size": 40,
+  "pvp_battle_speed_idx": 1,
+  "pvp_battle_init_len": 5,
+  "pvp_battle_food": 3,
+  "pvp_battle_grid_size": 40,
+  "pvp_battle_lives": 5,
+  "battle_length_advantage": 10,
+  "snake_style": 0,
+  "sound_enabled": true,
+  "sound_volume": 1.0,
+  "music_enabled": true,
+  "music_volume": 1.0
+}
